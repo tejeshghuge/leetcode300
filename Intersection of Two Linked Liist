@@ -1,0 +1,32 @@
+public class Solution {
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // Base case: If either list is null, return null
+        if (headA == null || headB == null)
+            return null;
+
+        ListNode a = headA;
+        ListNode b = headB;
+
+        // Traverse both lists
+        while (a != b) {
+
+            // Move pointer a
+            if (a == null) {
+                a = headB;  // Switch to head of B
+            } else {
+                a = a.next; // Move forward in current list
+            }
+
+            // Move pointer b
+            if (b == null) {
+                b = headA;  // Switch to head of A
+            } else {
+                b = b.next; // Move forward in current list
+            }
+        }
+
+        // Return either the intersection node or null
+        return a;
+    }
+}
